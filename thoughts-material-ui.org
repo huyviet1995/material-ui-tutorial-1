@@ -1,0 +1,41 @@
+* BACKLOG There is one problem right here that keeps bugging me all the time. 
+> When I select one option from the dropdown of services, I expect that the text should appear on the screen for the mobile app development. But I don't see any text appear right now. Need to fix this.
+? Well, how am I able to tackle this problem though?
+
+CLOCK: [2021-7-31 Sat 19:35]
+* I have followed exactly like what the tutorial showed me but somehow I don't think I got what they actually showed me but I don't know why it still does not work as expected.
+> I will have to figure out why this is hppening
+> first of all, I will need to know what he is doing and then I will try working on something more than that.
+? There are a few things I would like to improve here:
+CLOCK: [2021-7-31 Sat 22:32]
+** DONE The underline of all the links should be removed, has the same font as the menu positioned on the header
+? How should I do this then?
+> Well, I need to get the right fon't somehow. The font should be in the header actually.lo
+> I think this is more consistent that 
+
+CLOCK: [2021-8-20 Fri 21:27]
+> DOING Before I can continue learning, I would like to take a moment to modify my design so that it would look kinda similar to the design from the video actually.
+* DONE Make the button center on the screen
+> This is so weird, when I look at the two buttons right here.
+> I can literally see that there is no padding or margin surrounding those two buttons. then I wonder why they are not centered correctly at all?
+> there must be something blocking them from being centered actually.
+** Actually, there are some small things to focus on right here.
+** That is when 
+CLOCK: [2021-8-20 Fri 21:41]
+* DONE Move the footer under the hero and the image section. I would like to make them under there for some reasons.
+
+CLOCK: [2021-8-20 Fri 22:29]
+* DOING There is actually one thing I would like to improve man. 
+
+CLOCK: [2021-8-22 Sun 21:57]
+* DOING I am working on implementing the ios/Android block section using Material UI Grid right here.
+I can see the structure is comprised of a big container Grid and then inside the container Grid, there are multiples smaller Grid called the item Grid. 
+CLOCK: [2021-8-22 Sun 22:25]
+** DOING I would like to style the LEARN MORE Button right here actually
+
+CLOCK: [2021-8-23 Mon 9:14]
+* DOING 
+
+CLOCK: [2021-9-3 Fri 11:24]
+
+
