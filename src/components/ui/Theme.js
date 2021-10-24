@@ -60,6 +60,10 @@ const theme = createTheme({
       fontSize: "1.25rem",
       fontWeight: 300,
     },
+    body1: {
+      fontWeight: 300,
+      fontSize: "1.25rem",
+    },
     learnMore: {
       borderColor: arcBlue,
       borderRadius: 49,

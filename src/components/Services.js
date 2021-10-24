@@ -51,6 +51,21 @@ export default function Services(props) {
 
   return (
     <Grid container direction="column">
+      <Grid
+        item
+        style={{
+          marginLeft: matchesSM ? 0 : "5em",
+          marginTop: matchesSM ? "1em" : "2em",
+        }}
+      >
+        <Typography
+          variant="h2"
+          gutterBottom
+          align={matchesSM ? "center" : undefined}
+        >
+          Services
+        </Typography>
+      </Grid>
       {/* iOS/Android block */}
       <Grid
         container
@@ -64,6 +79,7 @@ export default function Services(props) {
           style={{
             marginLeft: matchesSM ? 0 : "5em",
             textAlign: matchesSM ? "center" : undefined,
+            width: matchesSM ? undefined : "35em",
           }}
         >
           <Typography variant="h4">iOS/Android App Development</Typography>
@@ -98,12 +114,14 @@ export default function Services(props) {
             className={classes.icon}
             alt="Mobile Phone Icon"
             src={mobileAppsIcon}
+            width="250em"
           ></img>
         </Grid>
       </Grid>
       <Grid
         container
         justify={matchesSM ? "center" : undefined}
+        className={classes.serviceContainer}
         direction="row"
       >
         <Grid
@@ -111,6 +129,7 @@ export default function Services(props) {
           style={{
             marginLeft: matchesSM ? 0 : "5em",
             textAlign: matchesSM ? "center" : undefined,
+            width: matchesSM ? undefined : "35em",
           }}
         >
           <Typography variant="h4">Custom Software Develop</Typography>
@@ -160,6 +179,7 @@ export default function Services(props) {
           item
           style={{
             textAlign: matchesSM ? "center" : undefined,
+            width: matchesSM ? undefined : "35em",
           }}
         >
           <Typography variant="h4">Website Development</Typography>
@@ -194,6 +214,7 @@ export default function Services(props) {
             className={classes.icon}
             alt="Mobile Phone Icon"
             src={websitesIcon}
+            width="250em"
           ></img>
         </Grid>
       </Grid>
