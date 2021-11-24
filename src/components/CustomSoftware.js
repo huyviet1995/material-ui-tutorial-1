@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   arrowContainer: {
     marginTop: "0.5em",
   },
-  mainContainer: {
+  rowContainer: {
     paddingLeft: "5em",
     paddingRight: "5em",
     [theme.breakpoints.down("sm")]: {
@@ -106,7 +106,7 @@ export default function CustomSoftware(props) {
           <Grid
             item
             className={classes.arrowContainer}
-            // style={{ marginRight: "1em", marginLeft: "-3.5em" }}
+            style={{ marginRight: "1em", marginLeft: "-3.5em" }}
           >
             <IconButton
               to="/services"
@@ -171,7 +171,7 @@ export default function CustomSoftware(props) {
             <IconButton
               style={{ backgroundColor: "transparent" }}
               component={Link}
-              to="/mobileapps"
+              to="/websites"
               onClick={() => props.setSelectedIndex(2)}
             >
               <img

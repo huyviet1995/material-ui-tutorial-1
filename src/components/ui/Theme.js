@@ -74,6 +74,11 @@ const theme = createTheme({
       borderWidth: "1px",
       fontWeight: "bold",
     },
+    caption: {
+      fontSize: "1rem",
+      fontWeight: 300,
+      color: arcGrey,
+    },
     learnButton: {
       borderColor: arcBlue,
       borderWidth: 2,
