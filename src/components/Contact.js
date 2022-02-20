@@ -18,7 +18,7 @@ import background from "../assets/background.jpg";
 import mobileBackground from "../assets/mobileBackground.jpg";
 import phoneIcon from "../assets/phone.svg";
 import emailIcon from "../assets/email.svg";
-import { Dialog, DialogContent, CircularProgress } from "@material-ui/core";
+import { Dialog, DialogContent, CircularProgress, Snackbar } from "@material-ui/core";
 
 import airplane from "../assets/send.svg";
 
@@ -97,6 +97,12 @@ export default function Contact() {
 
   const [loading, setLoading] = useState(false);
 
+  const [alert, setAlert] = useState({
+    open: false,
+    message: "",
+    backgroundColor: "",
+  });
+
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   // name
@@ -157,6 +163,11 @@ export default function Contact() {
         setEmail("");
         setPhone("");
         setMessage("");
+        setAlert({
+          open: true,
+          message: "Message sent successfully",
+          backgroundColor: "#488543",
+        });
       })
       .catch((error) => {
         setLoading(false);
@@ -165,6 +176,11 @@ export default function Contact() {
         setEmail("");
         setPhone("");
         setMessage("");
+        setAlert({
+          open: true,
+          message: "Something went wrong. Please try again",
+          backgroundColor: "#ff3232",
+        });
       });
   };
 
@@ -464,6 +480,9 @@ export default function Contact() {
           </Grid>
         </DialogContent>
       </Dialog>
+      <Snackbar open={alert.open} message={alert.message} ContentProps={{
+        style: { backgroundColor: alert.backgroundColor },
+      }} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} onClose={() => setAlert({ ...alert, open: false})} autoHideDuration={4000} />
       <Grid
         item
         container
