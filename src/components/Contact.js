@@ -343,7 +343,9 @@ export default function Contact() {
                 // }
                 variant="contained"
                 className={classes.sendButton}
-                onClick={onConfirm}
+                onClick={() => {
+                  setOpen(true);
+                }}
               >
                 {buttonContents}
               </Button>
@@ -452,7 +454,9 @@ export default function Contact() {
                 }
                 variant="contained"
                 className={classes.sendButton}
-                onClick={() => setOpen(true)}
+                onClick={() => { 
+                  onConfirm();
+                }}
               >
                 {loading ? <CircularProgress size={30} /> : buttonContents}
               </Button>
