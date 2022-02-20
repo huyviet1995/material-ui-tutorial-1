@@ -12,6 +12,8 @@ import profile from "../assets/founder.jpg";
 import yearbook from "../assets/yearbook.svg";
 import puppy from "../assets/puppy.svg";
 
+import CallToAction from "./ui/CallToAction";
+
 const useStyles = makeStyles((theme) => ({
   missionStatement: {
     fontStyle: "italic",
@@ -31,10 +33,16 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     height: "25em",
     width: "25em",
+    [theme.breakpoints.down("sm")]: {
+      height: "20em",
+      width: "20em",
+      maxHeight: "300px",
+      maxWidth: "300px",
+    },
   },
 }));
 
-export default function About() {
+export default function About(props) {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -42,7 +50,12 @@ export default function About() {
 
   return (
     <Grid direction="column">
-      <Grid item className={classes.rowContainer} style={{ marginTop: "2em" }}>
+      <Grid
+        item
+        className={classes.rowContainer}
+        align={matchesMD ? "center" : undefined}
+        style={{ marginTop: matchesMD ? "1em" : "2em" }}
+      >
         <Typography variant="h2">About Us</Typography>
       </Grid>
       <Grid item className={classes.rowContainer}>
@@ -139,7 +152,7 @@ export default function About() {
             <img
               src={history}
               alt={"quill pen sitting on top of book"}
-              style={{ maxHeight: "22em" }}
+              style={{ maxHeight: matchesMD ? "200px" : "22em" }}
             />
           </Grid>
         </Grid>
@@ -190,7 +203,11 @@ export default function About() {
             style={{ marginBottom: matchesMD ? "2.5em" : 0 }}
           >
             <Grid item>
-              <img src={yearbook} alt="yearbook about our founder"></img>
+              <img
+                src={yearbook}
+                alt="yearbook about our founder"
+                style={{ maxWidth: matchesMD ? 300 : undefined }}
+              ></img>
             </Grid>
             <Grid item>
               <Typography variant="caption">
@@ -224,7 +241,11 @@ export default function About() {
             alignItems={matchesMD ? "center" : "flex-end"}
           >
             <Grid item>
-              <img src={puppy} alt={"grey spotted puppy"} />
+              <img
+                src={puppy}
+                alt={"grey spotted puppy"}
+                style={{ maxWidth: matchesMD ? 300 : undefined }}
+              />
             </Grid>
             <Grid item>
               <Typography variant="caption">
@@ -233,6 +254,9 @@ export default function About() {
             </Grid>
           </Grid>
         </Grid>
+      </Grid>
+      <Grid item setValue={props.setValue}>
+        <CallToAction />
       </Grid>
     </Grid>
   );

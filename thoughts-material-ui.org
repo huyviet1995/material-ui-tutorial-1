@@ -38,4 +38,343 @@ CLOCK: [2021-8-23 Mon 9:14]
 
 CLOCK: [2021-9-3 Fri 11:24]
 
+CLOCK: [2021-11-29 Mon 19:44]
+* DONE I would like to make the placeholder and any text inside the field to be colored blue as well.
+> I would like to make the MuiInputBase to have the font weight of bold.
+> Interesting, i can do this by setting the overrides key, followed by  
+> How to address the style inside the 
+CLOCK: [2021-11-29 Mon 20:18]
+* TODO The font style next to the Phone should 
+CLOCK: [2021-11-29 Mon 20:40]
+** DOING Humh, I can see that in the tutorial, when I resize the windows to make it smaller, the image is moved below the text. I would like to make it 
+
+CLOCK: [2021-11-30 Tue 9:1]
+> NOw after I have updated the reusable component. Let's start working on applying this to the ContactPhone.
+* DONE Email (Manufacturer)
+** DONE One more thing right here though. That is I think I still have problems with the translation. The align does not look right when I change the language of the app to French.
+> Will need to solve this problem right here. 
+? What do I want to do?
+CLOCK: [2021-11-30 Tue 10:26]
+*** DONE I want to make the right side of the French tag touch the right side of the Set As Main button in French.
+> But I also want to allow an option to allow the language as well.
+> But for now, let's determine whether to add the language option class 
+> So I have just made the distance between the right edge of the Email field and the Mettre Principal to be 28px.
+x Will need to make this number consistent accross all the French language of the SetAsMain button.
+
+CLOCK: [2021-11-30 Tue 10:26]
+*** DONE I also want to make the right side of the Set As Main Tag in English touch the right side of the Set As Main Tag in French.
+* DONE Phone (Manufacturer)
+
+* DONE Let's do a double check on the Client again.
+
+CLOCK: [2021-11-30 Tue 11:20]
+** DOING Alright, let's move onto the ticket assigned by Shahid now.
+> I wonder if I can workaround this at all.  
+** DOING What I want to do is that I want to allow the user to navigate to the correct dropdown keyword after typing some letters, not only the first letter.
+> I don't think this feature is already done at all.
+> So I am wondering if I can find a way to workaround this then.
+> I do actually notice that when I start typing something, there is something changed on the DOM right here. I do notice that the aria-activedescendent is updated to reflect the id of the list item that is being chosen
+? How should I do this?
+> So I was thinking about maybe I will need to know what the current activedescendent is so I can set it accordingly.
+CLOCK: [2021-11-30 Tue 13:12]
+*** DONE Create a basic CustomSelect that can handle this. I just need to appear somewhere 
+
+*** DOING To know this, I will probably want a state value that is started to trigger WHEN I start opening the dropdown.
+**** DONE Create a state value called searchedKeywords
+**** DONE detect when the user click the dropdown.
+> How do I know this?
+> I can utilize the onClick function of the 
+> Nope, I will probably need to detect when this select is clicked using the ref value for example.
+> I have succeeded to make this work.
+CLOCK: [2021-11-30 Tue 16:4]
+**** DONE Detect when the dropdown is present. I can know this by using the querySelectors to know when the ul under the selectRef is selected.
+
+CLOCK: [2021-11-30 Tue 17:5]
+*** DONE When the dropdown is open and the user starts typing some keywords on keyboard, I will somehow store that one in a state value.
+? How should I do this though?
+> Of course I should utilize the useEffect to detect whether the isDropdownOpen is true.
+> Inside the useEffect, I will then need to detect which key the user is typing then by checking ?
+> Seems to me like I am not able to inject the isDropdownOpen into the handleKeydown function because I should only addEventListener once.
+> So I should somehow clear the keywords before I can set a new one 
+
+CLOCK: [2021-11-30 Tue 17:40]
+*** DONE When the statevalue changed, I will then set the activedescendent accordingly to the parent div.
+? How should I do this?
+> if the isDropdownOpen is true and there are some keywords typed then I will need set the attributes of the ul.
+> Sounds like I will need to select the li item within the ul and then append one class to its classList.
+CLOCK: [2021-11-30 Tue 18:55]
+** DOING Now I will also need to make sure that I can remove all the active classes before I can add a new one by typing
+*** DOING and if I hover over an item, all the other items should be clear as well. 
+? How should I solve this problem?
+> humh, I will probably need to detect which item I am hovering over then.
+? Wonder if updating the activedescendent would also clear the effect then.
+*** DOING Nope, I still need to think about somehow clearing all the other suggestedListItem when I start hovering over these items.
+? How should I do this?
+*** DONE Well, I will then somehow bind each of the item in the list to a mouseOver event. This can be done when isDropdownOpen is true. If it is false then I will simply remove that mouseOver event.
+CLOCK: [2021-12-1 Wed 14:4]
+*** DONE After successfully binding those events, when the mouseover event is triggered, I will need to somehow clear all the other active descendant 
+CLOCK: [2021-12-1 Wed 14:11]
+*** DOING The problem now is that WHEN I hover on one item for example and then I start typing something, then the item which is matched by typing will not be highlighted. I want that item to be highlighted.
+? How should I fix this?
+> I was actually thinking about storing the active item by typing into a state value.
+> Whenever I need to add the active class then I can remove the current suggestListItem and then add the one in this item.
+> Same thing WHEN 
+> Humh, this is still not working with the s
+> ALright, now it looks kinda good to me now. 
+CLOCK: [2021-12-1 Wed 14:35]
+*** DONE I will need to pass down props to make it look like a normal Select for now.
+CLOCK: [2021-12-1 Wed 15:4]
+*** DONE Is there a way to filter the keycodes that are not 
+
+CLOCK: [2021-12-1 Wed 15:25]
+* DONE Let's clear all the react warning showing up inside the file right here.
+
+Still not working unstably, this might happen because of the React memory leak.
+
+
+
+
+cLOCK: [2021-12-1 Wed 10:8]
+** DOING Create the Document.
+
+CLOCK: [2021-12-1 Wed 10:13]
+** DONE Create the first basic tests.
+
+? When should I clear the array of keywords? 
+> WHEN the user hits the esc keys or WHEN the user choose an option or when the user clicks outside of both the dropdown and the select input. Seems like WHEN the user clicks anywhere on the screen should the array of keywords be clear.
+
+** When the user clicks anywhere outside of the dropdown => I will need to set the s
+
+CLOCK: [2021-11-30 Tue 13:37]
+* DONE Make all test passes
+? Why I add the buttonRemovalLabel right here but it is still not working then?
+> Oh, yeah, I know why now. This is happening because of the fact that 
+> I see why now, because besides the Main button, for the Phone, there should also be a removal Icon.
+> Which means that I will need to allow the optional remove-button to appear right here.
+> Now let's style this correctly.
+CLOCK: [2021-11-30 Tue 14:22]
+** DONE I would like to make the Main Tag and the Set As Main button to align correctly to the right.
+? How?
+> the distance between the SET AS MAIN and the right edge of the Ext (Optional) is 132px.
+> Which means I will need to make the distance between main tag and the edge of the Ext (Optional) to be 132px as well.
+> The Main has width of 37. So the padding left of the Main is supposed to be.
+CLOCK: [2021-11-30 Tue 14:34]
+** DONE Seems like I will need to add the Remove Button next to the MainTag of the Edit Manufacturer form.
+? How should I do this.
+44+80 = 124px
+
+CLOCK: [2021-12-1 Wed 10:35]
+* DOING Remove the required field in
+CLOCK: [2021-12-1 Wed 10:36]
+** DONE Manufacturer
+> HUmh I am having some troubles right here.
+> For some reasons, the email input is still glowing in red when I click outside. I will need to make sure that the border should not be red when the email is required.
+
+CLOCK: [2021-12-1 Wed 10:36]
+** DONE Client
+*** DONE Remove the required Type and Email address right here.
+
+CLOCK: [2021-12-1 Wed 11:9]
+** TODO 
+
+CLOCK: [2021-12-1 Wed 15:48]
+* DONE Now let's fix some tests failing right here.
+** DONE should the Email Field be present, have correct label, and have correct validations (invalid email, maxLength, required field) (2524 ms)
+? Why is this happening?
+> Well, I know that I have just removed the required email right here.
+CLOCK: [2021-12-1 Wed 16:59]
+* DOING Let's add the missing line between 2 addresses right here.
+
+CLOCK: [2021-12-1 Wed 17:13]
+CENW-2180: 
+** DOING Now I want to show an error above Type if user tries to enter some email addresses into the field.
+? How to do this?
+> So right here, inside the useShowFieldCustomErrorEffect.
+> For this, I will probably need to utilize the valid and required props of Select.
+CLOCK: [2021-12-2 Thu 9:7]
+? How can I utilize this though?
+> Well of course, inside the useEffect, I will somehow need to set the valid to false if the emailAddress has value.
+>  
+
+CLOCK: [2021-12-2 Thu 10:9]
+* DOING Sounds like I will need to update the Main/SetAsMain design to make all of them look like Manufacturer.
+** DONE Manufacturer
+*** DONE English
+*** DONE French
+*** DONE DOuble check with design
+> I will need to set this so that the SetAsMain component will become the default one.
+** DONE Client
+*** DONE English
+*** DONE French
+*** DONE DOuble check with design
+** DONE User
+*** DONE English
+*** DONE French
+*** DONE Double check with design
+CLOCK: [2021-12-2 Thu 10:49]
+** DONE Fix tests failing.
+CLOCK: [2021-12-2 Thu 11:35]
+** TODO Humh, I still need to momve the Set As Main in French a little to the right
+*** DOING Humh, the Client looks a little bit off when the Set As Main is in French.
+> Yeah, should customize the main class a little bit.
+** DOING Seems like there is a lil bit update on the design right here.
+
+CLOCK: [2021-12-2 Thu 13:43]
+* TODO Let's do a final and careful check for Client/Manufacturer/User.
+** DONE Client
+*** DONE remove-button to the right of the Main in Client should be 33px to the right of the Main button.
+*** DONE However, in French, it should only be 20px to the right of the Principal tag.
+
+** DONE Manufacturer
+CLOCK: [2021-12-2 Thu 14:3]
+** DONE User
+
+CLOCK: [2021-12-2 Thu 14:6]
+* DONE Double check the last time.
+> Humh, why the Main and the Set Asmain remove button not on the horizontal line.
+> Humh, is there anyway to make the distance between the main and the remove button to be exactly like the distance between the Set-As-Main and the remove button though.
+
+CLOCK: [2021-12-2 Thu 14:15]
+* DONE Make the button from Create Client to Create only.
+CLOCK: [2021-12-2 Thu 14:27]
+* DONE Why am I not able to click the button Create right here.
+CLOCK: [2021-12-2 Thu 14:31]
+** TODO Need to remove the warning on the inspect warning.
+> I know one thing for sure that this happens inside the Select Custom.
+? Why is it happening though?
+> I know one thing for sure that this is happening in the line 59 I just don't understand why though.
+> Well, the error still shows up on inspect. Wonder WHY?
+> Probably happens because the setState is called when the component has finished unmounting.
+? How to solve this?
+> I will need to know when the component is unmounting successfully so I can stop calling the react setState right here.
+> 
+** TODO One more problem right here, when I hover over one option of the country options. The previos 
+> I can solve this problem in the ticket to Shay.
+
+
+CLOCK: [2021-12-2 Thu 11:16]
+* TODO Now the problem with the DatePicker is off. 
+
+CLOCK: [2021-12-2 Thu 15:59]
+* DOING Interestingly, the two addresses are looking kinda identical then why this error is happening.
+? WHY is this happening?
+> I suspect that this is happening because of the regular expression.
+CLOCK: [2021-12-2 Thu 16:29]
+* TODO I've found a little problem
+
+CLOCK: [2021-12-2 Thu 16:49]
+* DOING What I want to do right now is that when input email then the type will start showing the error
+** DOING For Client
+? How?
+> So the condition will be something like if emailEntry.emailAddress is present AND type is not then I will set the valid of type to false
+CLOCK: [2021-12-2 Thu 17:2]
+** DONE Now this is the hard part right here. When I type something into the email input and the input is valid => the type box will show an error which is cool.
+> but the email should be aligned correctly as well.
+CLOCK: [2021-12-2 Thu 17:7]
+** DOING For Manufacturer, 
+
+CLOCK: [2021-12-2 Thu 18:44]
+** DOING CENW-2199: [CIC] Invalid email but don't show alert
+? Why is this happening?
+> 
+CLOCK: [2021-12-3 Fri 9:7]
+** TODO Well, then I will need to do something 
+
+CLOCK: [2021-12-3 Fri 9:26]
+* DONE When type the first letter, will start with all countries with that letter
+? How?
+> Well, if I look at the file SelectCustom?
+> I will need to find the place where I start filtering out the option to choose to highlight
+CLOCK: [2021-12-3 Fri 10:25]
+** TODO One more thing I might want to improve right here. That is WHEN I find one and then I click the arrow up/down key, it should kinda pick the above/below highlighted item.
+? How to do this?
+
+** DONE I also notice that multiple keydown is fired WHEN I press and hold the key for like 2s or so. what I want to do is that WHEN the user press a key, a keyword should be registered but not repeating itself.
+CLOCK: [2021-12-3 Fri 12:8]
+*** DOING I will set a state to make it true to signify that a keyword event is being fired. If it is true => then I will stop whatever logic is working inside right here. 
+> But a problem arises right here, that is if I set the state to true => then I will need wait until it finishes being updated before I can set the state value.
+? How am I able to do this?
+> I will need to clear the currentKeyTyped after I close the dropdown
+CLOCK: [2021-12-3 Fri 13:50]
+*** DONE Something wrong is going on here, I will need to type at least twice for a key to be used in the list of keywords
+? Why is this happening though?
+> the first time when I click I expect the onKeydown event will be triggered.
+> which will setKeydown(true)
+> after it becomes true => 
+CLOCK: [2021-12-3 Fri 14:22]
+> I might need to use the repeat key in here.
+> Yeah, I might need to use the .repeat right here.
+CLOCK: [2021-12-3 Fri 14:48]
+*** DONE I can see one bug is happening right here, WHEN I pick an option from the list then the option will close and I open it again, everytime I type the list of keywords will be empty again. I don't want it to be empty at all.
+? Why is this happening though?
+> I see, this happens when I hit enter an option
+> It is not a mousedown event. Rather it is a keydown event.
+> I can tackle this actually right in the onChange handler of the Select itself.
+CLOCK: [2021-12-3 Fri 15:28]
+** DOING WHEN I find one and then I click the arrow up/down key, it should kinda pick the above/below highlighted item
+> It seems to me like the next item which is highlighted is randomly selected.
+> I see, it is actually the adjacent item of the item being selected.
+> Seems to me like I will need to do that as well.
+CLOCK: [2021-12-3 Fri 15:49]
+*** DOING Seems like I will need to inject the value into the input here as well.
+? How to do this?
+
+CLOCK: [2021-12-3 Fri 17:17]
+
+CLOCK: [2021-12-3 Fri 17:53]
+* DOING Validation Email for preferredCommunicationmethod right here.
+
+> Soemthing wrong with update-email-length validation right here.
+CLOCK: [2021-12-3 Fri 18:33]
+* DOING Currently, even when I move to the Contact email tab => even though it definitely valid, and length < 254 => still show the input invalid error?
+? Why?
+> It simply does not match the pattern at all?
+? How to fix this?
+> 
+
+
+*** TODO if the keyup event is then keydown will be set back false.
+
+> Okay, sounds like I will need to clarify my mind in here just a little bit.
+> what I want to do is that WHEN the 
+
+> I will need to get the firebase URL from the cloud function but I was actually wonder if it serves any purposes though.
+> 
+Firebase URL: I can see all the logs and stuff
+
+CLOCK: [2021-12-11 Sat 13:46]
+* DONE Can get something from the sendMail functions when calling to the Google Services.
+CLOCK: [2021-12-11 Sat 14:7]
+* DOING I want to see the test email on my account then.
+> The problem is that currently, I am not able to see any emails coming into my inbox even though the options inside my mailOptions clearly define vietdanghuy.95@gmail.com as the recipient email.
+> I wonder what is happening right here.
+> if I look at the response over here. It does not even seem like I am able to see the message message sent successfully though. 
+> I want to make sure that the error I have sent back is what I need.
+> Although it seems like I have been able to invoke the sendMail function
+> The data I've received is { code: 'EAuth', comamnd: 'API' } which is not very cool.
+? Why is this error happening though?
+> sounds like because of the fact that the config.user.email and the config.user.password should be set to have my email and password.
+> Humh, the code is 3 and the message is Function failed on loading user code so there must be something wrong with the  
+> When I look at the log, I can see that the functions failed on loading user-code.
+? I am just wondering WHY does this error happen then?
+> According to the log, I can see that because of the fact that the compiler cannot find the smtp node package at all.
+> I've seen that I can see the less secure app option is on but I am still not able to send the email properly.
+> Yes, seems like the error is actually coming from 
+> Seems like I have a typo inside the cors function.
+*** DONE Maybe I should try using the dirox email to see if that works.
+> Nope this still does not work at all.
+> So I think that I will try hard-coding everything inside the auth.
+*** I am trying to use the app password 
+
+rpm2cpio jdk-8u311-linux-x64.rpm | (cd /tutorial; cpio -idmv)
+
+Now I will need to free some disk spaces before I can proceed.
+
+CLOCK: [2021-12-11 Sat 20:58]
+* DOING What I want to do now is to simply be able to opePn the Kotlin REL so I can keep going with the tutorial. But it seems to me like even it is something hard to do because I am not yet used to all the tutorials and things insdie this.
+
+CLOCK: [2021-12-14 Tue 19:46]
+* DOING Seems like I am having a big trouble starting the project for some reasons. What I want to do is simply to start the project right here.
+? What are the troubles I am having
+> Even though I have clearly followed the instructions
 

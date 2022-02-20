@@ -89,6 +89,39 @@ const theme = createTheme({
       fontWeight: "bold",
     },
   },
+  overrides: {
+    MuiInputLabel: {
+      root: {
+        fontSize: "1rem",
+        color: arcBlue,
+        fontWeight: "bold",
+      },
+    },
+    MuiInputBase: {
+      root: {
+        color: arcBlue,
+        fontWeight: "bold",
+      },
+    },
+    MuiInput: {
+      underline: {
+        "&:before": {
+          borderBottom: `2px solid ${arcBlue}`,
+        },
+        "&:hover:not($disabled):not($focus):not($error):before": {
+          borderBottom: `2px solid ${arcBlue}`,
+        },
+      },
+      input: {
+        fontWeight: "bold",
+      },
+    },
+    MuiFormHelperText: {
+      root: {
+        fontWeight: "bold",
+      },
+    },
+  },
   appBar: {
     display: "block",
   },
