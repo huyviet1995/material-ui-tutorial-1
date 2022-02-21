@@ -15,11 +15,8 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const mailOptions = {
+let mailOptions = {
   from: "viet.dang@dirox.net",
-  to: "vietdanghuy.95@gmail.com",
-  subject: "Testing Node Mailer",
-  text: "Test Successful",
 };
 
 // Create and Deploy Your First Cloud Functions
@@ -27,6 +24,14 @@ const mailOptions = {
 
 exports.sendMail = functions.https.onRequest((request, response) => {
   cors(request, response, () => {
+    const { name, email, phone, message } = request.query;
+
+    mailOptions = { from: "viet.dang@dirox.net" ,to: "vietdanghuy.95@gmail.com", html:`
+      <p style="font-size: 16px">From: ${name}</p>
+      <p style="font-size: 16px">Email: ${email}</p>
+      <p style="font-size: 16px">Phone Number: ${phone}</p>
+      <p style="font-size: 16px">Message: ${message}</p>`
+    };
     transporter.sendMail(mailOptions, (error) => {
       if (error) {
         response.send(error);
@@ -34,5 +39,6 @@ exports.sendMail = functions.https.onRequest((request, response) => {
         response.send("Message sent successfully");
       }
     });
+    mailOptions = { from: "viet.dang@dirox.net", to: email, subject: 'We have received your message', html: 'hello'}
   });
 });

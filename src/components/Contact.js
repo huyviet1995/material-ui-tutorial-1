@@ -154,7 +154,14 @@ export default function Contact() {
     setLoading(true);
     axios
       .get(
-        "https://us-central1-material-ui-tutorial-b84ee.cloudfunctions.net/sendMail"
+        "https://us-central1-material-ui-tutorial-b84ee.cloudfunctions.net/sendMail", { 
+          params: {
+            name,
+            email,
+            phone,
+            message
+          }
+        }
       )
       .then((res) => { 
         setLoading(false);
