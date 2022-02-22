@@ -28,10 +28,10 @@ exports.sendMail = functions.https.onRequest((request, response) => {
 
     mailOptions = { from: "viet.dang@dirox.net" ,to: "vietdanghuy.95@gmail.com", html:`
       <p style="font-size: 16px">From: ${name}</p>
-      <p style="font-size: 16px">Email: ${email}</p>
+      <p style="font-size: 16px">Email: ${email}</wp>
       <p style="font-size: 16px">Phone Number: ${phone}</p>
       <p style="font-size: 16px">Message: ${message}</p>`
-    };
+    
     transporter.sendMail(mailOptions, (error) => {
       if (error) {
         response.send(error);
