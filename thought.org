@@ -1,0 +1,5 @@
+CLOCK: [2022-2-21 Mon 23:52]
+** DOING Firebase deploy should be successful.
+
+CLOCK: [2022-2-22 Tue 22:57]
+** DOING Let's build the Estimate Page.
