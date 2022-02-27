@@ -32,6 +32,18 @@ const useStyles = makeStyles(theme => ({
     icon: {
         width: '12em',
         height: '12em',
+    },
+    estimateButton: {
+        ...theme.typography.estimate,
+        borderRadius: 50,
+        backgroundColor: theme.palette.common.orange,
+        height: 50,
+        width: 225,
+        fontSize: "1.25rem",
+        marginTop: "5em",
+        "&:hover": {
+            backgroundColor: theme.palette.secondary.light,
+        }
     }
 }));
 
@@ -102,6 +114,9 @@ export default function Estimate() {
                     </Grid>
                     <Grid item>
                         <img src={forwardArrow} alt="Next question"></img>
+                    </Grid>
+                    <Grid item>
+                        <Button variant="contained" className={classes.estimateButton}>Get Estimate</Button>
                     </Grid>
                 </Grid>
             </Grid>
