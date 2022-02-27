@@ -36,7 +36,8 @@ const useStyles = makeStyles(theme => ({
     estimateButton: {
         ...theme.typography.estimate,
         borderRadius: 50,
-        backgroundColor: theme.palette.common.orange,
+        backgroundColor: theme.palette.common.arcOrange,
+        color: '#fff',
         height: 50,
         width: 225,
         fontSize: "1.25rem",
