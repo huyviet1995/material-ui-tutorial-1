@@ -25,6 +25,7 @@ import data from '../assets/data.svg';
 import android from '../assets/android.svg';
 import globe from '../assets/globe.svg';
 import biometrics from '../assets/biometrics.svg';
+import info from '../assets/info.svg';
 
 import estimateAnimation from '../animations/estimateAnimation/data.json';
 
