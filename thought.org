@@ -3,3 +3,8 @@ CLOCK: [2022-2-21 Mon 23:52]
 
 CLOCK: [2022-2-22 Tue 22:57]
 ** DOING Let's build the Estimate Page.
+> It seems to me that I have followed exactly what 
+CLOCK: [2022-2-27 Sun 22:14]
+** DOING I want to get the color of the button correctly but how.
+> Seems like I will somehow need to get into the Github repo of the instructor to get what I want then.
+> 
