@@ -58,7 +58,7 @@ export default function Estimate() {
                     <Lottie options={defaultOptions} height="100%" width="100%" />
                 </Grid>
             </Grid>
-            <Grid item container lg direction="column" style={{ marginRight: "2em", marginBottom: "25em" }}>
+            <Grid item container lg direction="column" alignItems='center' style={{ marginRight: "2em", marginBottom: "25em" }}>
                 <Grid item>
                     <Typography variant="h2" align="center" style={{ fontWeight: 500, fontSize: "2.25rem", marginBottom: "2.5em", marginTop: "5em" }} gutterBottom>
                         Which services are you interested in
@@ -94,6 +94,14 @@ export default function Estimate() {
                                 <img src={website} alt="computer outline" className={classes.icon} />
                             </Grid>
                         </Grid>
+                    </Grid>
+                </Grid>
+                <Grid item container justifyContent='space-between' style={{ width: '15em', marginTop: '3em' }}>
+                    <Grid item>
+                        <img src={backArrow} alt="Previous question"></img>
+                    </Grid>
+                    <Grid item>
+                        <img src={forwardArrow} alt="Next question"></img>
                     </Grid>
                 </Grid>
             </Grid>
