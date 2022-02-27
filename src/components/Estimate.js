@@ -48,6 +48,14 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+const defaultQuestions = [
+    { id: 1, title: 'Which services are you interested in', active: true, options: [
+        { id: 1, title: "Custom Software Development", subtitle: null, icon: software, iconAlt: 'Three floating screens', selected: false, cost: 0 },
+        { id: 2, title: "IOS Android Development", subtitle: null, icon: mobile, iconAlt: 'Phones and tablets outline', selected: false, cost: 0 },
+        { id: 3, title: "Website Development", subtitle: null, icon: website, iconAlt: 'Computer outline', selected: false, cost: 0 },
+    ] },
+]
+
 export default function Estimate() {
     const classes = useStyles();
     const theme = useTheme();
@@ -72,43 +80,33 @@ export default function Estimate() {
                 </Grid>
             </Grid>
             <Grid item container lg direction="column" alignItems='center' style={{ marginRight: "2em", marginBottom: "25em" }}>
-                <Grid item>
-                    <Typography variant="h2" align="center" style={{ fontWeight: 500, fontSize: "2.25rem", marginBottom: "2.5em", marginTop: "5em" }} gutterBottom>
-                        Which services are you interested in
-                    </Typography>
-                </Grid>
-                <Grid item container>
-                    <Grid item container direction="column" md>
-                        <Grid item container direction="column">
-                            <Grid item style={{ maxWidth: '12em' }}>
-                                <Typography style={{ marginBottom: "1em" }} variant="h6" align="center">Custom Software Development</Typography>
-                            </Grid>
-                            <Grid item>
-                                <img src={software} alt="three floating screens" className={classes.icon} />
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                    <Grid item container direction="column" md>
-                        <Grid item container direction="column">
-                            <Grid item style={{ maxWidth: '12em' }}>
-                                <Typography style={{ marginBottom: "1em" }} variant="h6" align="center">IOS/Android App Development</Typography>
-                            </Grid>
-                            <Grid item>
-                                <img src={mobile} alt="phones and tablet outline" className={classes.icon} />
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                    <Grid item container direction="column" md>
-                        <Grid item container direction="column">
-                            <Grid item style={{ maxWidth: '12em' }}>
-                                <Typography style={{ marginBottom: "1em" }} variant="h6" align="center">Website Development</Typography>
-                            </Grid>
-                            <Grid item>
-                                <img src={website} alt="computer outline" className={classes.icon} />
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                </Grid>
+                    {defaultQuestions.filter(question => question.active).map((question, index) => {
+                        return (
+                            <React.Fragment key={index}>
+                                <Grid item>
+                                    <Typography variant="h2" align="center" style={{ fontWeight: 500, fontSize: "2.25rem", marginTop: "5em" }}>
+                                        {question.title}
+                                    </Typography>
+                                </Grid>
+                                <Typography variant="body1" align="center" style={{ marginBottom: '2.5em', }} gutterBottom></Typography>
+                                <Grid item container>
+                                    {question.options.map(option => (
+                                        <Grid item container direction="column" md>
+                                            <Grid item container direction="column">
+                                                <Grid item style={{ maxWidth: '12em' }}>
+                                                    <Typography style={{ marginBottom: "1em" }} variant="h6" align="center">{option.title}</Typography>
+                                                    <Typography variant='caption' align='center'>{option.subtitle}</Typography>
+                                                </Grid>
+                                                <Grid item>
+                                                    <img src={option.icon} alt={option.iconAlt} className={classes.icon} />
+                                                </Grid>
+                                            </Grid>
+                                        </Grid>
+                                    ))}
+                                </Grid>
+                            </React.Fragment>
+                        )
+                    })}
                 <Grid item container justifyContent='space-between' style={{ width: '15em', marginTop: '3em' }}>
                     <Grid item>
                         <img src={backArrow} alt="Previous question"></img>
