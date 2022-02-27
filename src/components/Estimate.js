@@ -28,9 +28,12 @@ import biometrics from '../assets/biometrics.svg';
 
 import estimateAnimation from '../animations/estimateAnimation/data.json';
 
-const useStyles = makeStyles(theme => {
-
-});
+const useStyles = makeStyles(theme => ({
+    icon: {
+        width: '12em',
+        height: '12em',
+    }
+}));
 
 export default function Estimate() {
     const classes = useStyles();
@@ -47,48 +50,48 @@ export default function Estimate() {
 
     return (
         <Grid container direction="row">
-            <Grid item container direction="column">
-                <Grid item>
+            <Grid item container direction="column" lg>
+                <Grid item style={{ marginTop: '2em', marginLeft: '5em' }}>
                     <Typography variant="h2">Estimate</Typography>
                 </Grid>
+                <Grid item container direction="column" style={{ marginRight: '10em', maxWidth: '50em', marginTop: "7.5em" }}>
+                    <Lottie options={defaultOptions} height="100%" width="100%" />
+                </Grid>
             </Grid>
-            <Grid item container direction="column">
-                <Lottie options={defaultOptions} height="100%" width="100%" />
-            </Grid>
-            <Grid item container direction="column">
+            <Grid item container lg direction="column" style={{ marginRight: "2em", marginBottom: "25em" }}>
                 <Grid item>
-                    <Typography variant="h2" align="center" style={{ fontWeight: 300 }} gutterBottom>
+                    <Typography variant="h2" align="center" style={{ fontWeight: 500, fontSize: "2.25rem", marginBottom: "2.5em", marginTop: "5em" }} gutterBottom>
                         Which services are you interested in
                     </Typography>
                 </Grid>
                 <Grid item container>
-                    <Grid item container direction="column">
+                    <Grid item container direction="column" md>
                         <Grid item container direction="column">
                             <Grid item style={{ maxWidth: '12em' }}>
-                                <Typography variant="h6" align="center">Custom Software Development</Typography>
+                                <Typography style={{ marginBottom: "1em" }} variant="h6" align="center">Custom Software Development</Typography>
                             </Grid>
                             <Grid item>
-                                <img src={software} alt="three floating screens" />
+                                <img src={software} alt="three floating screens" className={classes.icon} />
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid item container direction="column">
+                    <Grid item container direction="column" md>
                         <Grid item container direction="column">
                             <Grid item style={{ maxWidth: '12em' }}>
-                                <Typography variant="h6" align="center">IOS/Android App Development</Typography>
+                                <Typography style={{ marginBottom: "1em" }} variant="h6" align="center">IOS/Android App Development</Typography>
                             </Grid>
                             <Grid item>
-                                <img src={mobile} alt="phones and tablet outline" />
+                                <img src={mobile} alt="phones and tablet outline" className={classes.icon} />
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid item container direction="column">
+                    <Grid item container direction="column" md>
                         <Grid item container direction="column">
                             <Grid item style={{ maxWidth: '12em' }}>
-                                <Typography variant="h6" align="center">Website Development</Typography>
+                                <Typography style={{ marginBottom: "1em" }} variant="h6" align="center">Website Development</Typography>
                             </Grid>
                             <Grid item>
-                                <img src={website} alt="computer outline" />
+                                <img src={website} alt="computer outline" className={classes.icon} />
                             </Grid>
                         </Grid>
                     </Grid>

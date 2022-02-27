@@ -53,6 +53,7 @@ const theme = createTheme({
     h6: {
       fontWeight: 500,
       fontFamily: "Raleway",
+      lineHeight: 1,
       color: arcBlue,
     },
     subtitle1: {
