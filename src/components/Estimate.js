@@ -334,10 +334,6 @@ export default function Estimate() {
       const newSelected = newQuestions[activeIndex].options[id - 1];
       const previousSelected = currentlyActive[0].options.filter(option => option.selected);
 
-      console.log({ newSelected }, 'new selected!');
-
-      newSelected.selected = !newSelected.selected;
-
       switch (currentlyActive[0].subtitle) {
         case 'Select one.':
           if (previousSelected[0]) {
