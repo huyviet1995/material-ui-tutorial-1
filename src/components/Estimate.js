@@ -326,6 +326,20 @@ export default function Estimate() {
 
     }
 
+    const handleSelect = (id) => {
+      const newQuestions = cloneDeep(questions);
+      const currentlyActive = newQuestions.filter(question => question.active);
+      const activeIndex = currentlyActive[0].id - 1;
+
+      const newSelected = newQuestions[activeIndex].options[id - 1];
+
+      newSelected.selected = !newSelected.selected;
+      console.log({ newSelected });
+
+      setQuestions(newQuestions);
+
+    }
+
     return (
         <Grid container direction="row">
             <Grid item container direction="column" lg>
@@ -348,10 +362,24 @@ export default function Estimate() {
                                 <Typography variant="body1" align="center" style={{ marginBottom: '2.5em', }} gutterBottom></Typography>
                                 <Grid item container>
                                     {question.options.map(option => (
-                                        <Grid item container direction="column" md>
+                                        <Grid 
+                                          item 
+                                          container 
+                                          direction="column" 
+                                          md 
+                                          component={Button} 
+                                          style={{ 
+                                            display: "grid", 
+                                            borderRadius: 0,
+                                            textTransform: "none", 
+                                            maxWidth: "14em", 
+                                            backgroundColor: option.selected ? theme.palette.common.arcOrange : null  
+                                          }}
+                                          onClick={() => handleSelect(option.id)}
+                                        >
                                             <Grid item container direction="column">
                                                 <Grid item style={{ maxWidth: '12em' }}>
-                                                    <Typography style={{ marginBottom: "1em" }} variant="h6" align="center">{option.title}</Typography>
+                                                    <Typography style={{ marginBottom: "1em", lineHeight: "1.25em" }} variant="h6" align="center">{option.title}</Typography>
                                                     <Typography variant='caption' align='center'>{option.subtitle}</Typography>
                                                 </Grid>
                                                 <Grid item>
@@ -363,8 +391,6 @@ export default function Estimate() {
                                 </Grid>
                             </React.Fragment>
                         )
-                    })}
-                <Grid item container justifyContent='space-between' style={{ width: '15em', marginTop: '3em' }}>
                     <Grid item>
                         <IconButton onClick={previousQuestions}>
                             <img src={backArrow} alt="Previous question"></img>
