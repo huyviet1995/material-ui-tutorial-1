@@ -281,7 +281,7 @@ export default function Estimate() {
     const classes = useStyles();
     const theme = useTheme();
 
-    const [questions, setQuestions] = useState(softwareQuestions);
+    const [questions, setQuestions] = useState(defaultQuestions);
 
     const defaultOptions = {
         loop: true,
@@ -332,11 +332,38 @@ export default function Estimate() {
       const activeIndex = currentlyActive[0].id - 1;
 
       const newSelected = newQuestions[activeIndex].options[id - 1];
+      const previousSelected = currentlyActive[0].options.filter(option => option.selected);
+
+      console.log({ newSelected }, 'new selected!');
 
       newSelected.selected = !newSelected.selected;
-      console.log({ newSelected });
 
-      setQuestions(newQuestions);
+      switch (currentlyActive[0].subtitle) {
+        case 'Select one.':
+          if (previousSelected[0]) {
+            previousSelected[0].selected = !previousSelected[0].selected
+          }
+          newSelected.selected = !newSelected.selected
+          break;
+        default:
+          newSelected.selected = !newSelected.selected;
+          break;
+      }
+
+      switch (newSelected.title) {
+        case 'Custom Software Development':
+          setQuestions(softwareQuestions);
+          break;
+        case 'IOS/Android App Development':
+          setQuestions(softwareQuestions);
+          break;
+        case 'Website Development':
+          setQuestions(websiteQuestions);
+          break;
+        default:
+          setQuestions(newQuestions);
+          break;
+      }
 
     }
 
@@ -360,7 +387,7 @@ export default function Estimate() {
                                     </Typography>
                                 </Grid>
                                 <Typography variant="body1" align="center" style={{ marginBottom: '2.5em', }} gutterBottom></Typography>
-                                <Grid item container>
+                                <Grid item container justifyContent='space-around'>
                                     {question.options.map(option => (
                                         <Grid 
                                           item 
@@ -394,12 +421,12 @@ export default function Estimate() {
                     })}
                 <Grid item container justifyContent='space-between' style={{ width: '15em', marginTop: '3em' }}>
                     <Grid item>
-                        <IconButton onClick={previousQuestions}>
+                        <IconButton onClick={previousQuestions} disabled={questions.length === 1}>
                             <img src={backArrow} alt="Previous question"></img>
                         </IconButton>
                     </Grid>
                     <Grid item>
-                        <IconButton onClick={nextQuestions}>
+                        <IconButton onClick={nextQuestions} disabled={questions.length === 1}>
                           <img src={forwardArrow} alt="Next question"></img>
                         </IconButton>
                     </Grid>
