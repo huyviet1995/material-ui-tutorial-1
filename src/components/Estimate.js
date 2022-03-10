@@ -65,9 +65,9 @@ const useStyles = makeStyles((theme) => ({
     specialText: {
         fontFamily: "Railway",
         fontWeight: 700,
-        fontSize: '1.5rem',
-        color: theme.palette.common.arcOrange
-    }
+        fontSize: "1.5rem",
+        color: theme.palette.common.arcOrange,
+    },
 }));
 
 const defaultQuestions = [
@@ -460,19 +460,25 @@ export default function Estimate() {
 
     const getTotal = () => {
         let cost = 0;
-        const selections = questions.map(question => question.options.filter(option => option.selected)).filter(option => option.length > 0);
-        selections.map(option => option.map(option => cost += option.cost ));
+        const selections = questions
+            .map((question) => question.options.filter((option) => option.selected))
+            .filter((option) => option.length > 0);
+        selections.map((option) => option.map((option) => (cost += option.cost)));
         setTotal(cost);
 
         if (questions.length > 2) {
             const userCost = questions
-                .filter(question => question.title === 'How many users do you expect?')
-                .map(question => question.options.filter(option => option.selected))[0][0].cost;
+                .filter(
+                    (question) => question.title === "How many users do you expect?"
+                )
+                .map((question) =>
+                    question.options.filter((option) => option.selected)
+                )[0][0].cost;
             cost = cost - userCost;
             cost = cost * userCost;
         }
         setTotal(cost);
-    } 
+    };
 
     return (
         <Grid container direction="row">
@@ -596,9 +602,9 @@ export default function Estimate() {
                         <Button
                             variant="contained"
                             className={classes.estimateButton}
-                            onClick={() => { 
+                            onClick={() => {
                                 getTotal();
-                                setDialogOpen(true)
+                                setDialogOpen(true);
                             }}
                         >
                             Get Estimate
@@ -615,7 +621,7 @@ export default function Estimate() {
                     </Grid>
                     <DialogContent>
                         <Grid container>
-                            <Grid item container direction="column">
+                            <Grid item container direction="column" md={7}>
                                 <Grid item style={{ marginBottom: "0.5em" }}>
                                     {/* name field */}
                                     <Grid>
@@ -665,13 +671,52 @@ export default function Estimate() {
                                 </Grid>
                                 <Grid item>
                                     <Typography variant="body1" paragraph>
-                                        We can create this digital solution for an estimated <span className={classes.specialText}>${total.toFixed(2)}</span>
+                                        We can create this digital solution for an estimated{" "}
+                                        <span className={classes.specialText}>
+                                            ${total.toFixed(2)}
+                                        </span>
                                     </Typography>
                                     <Typography variant="body1" paragraph>
                                         Fill out your name, phone number, and email, place your
                                         request, and we'll get back to you with details moving
                                         forward with a final price.
                                     </Typography>
+                                </Grid>
+                            </Grid>
+                            <Grid item container direction="column" md={5}>
+                                <Grid item>
+                                    <Grid container direction="column">
+                                        <Grid item container alignItems="center">
+                                            <Grid item>
+                                                <img src={check} alt="check-mark"></img>
+                                            </Grid>
+                                            <Grid item>
+                                                <Typography variant="body1">
+                                                    First option check
+                                                </Typography>
+                                            </Grid>
+                                        </Grid>
+                                        <Grid item container alignItems="center">
+                                            <Grid item>
+                                                <img src={check} alt="check-mark"></img>
+                                            </Grid>
+                                            <Grid item>
+                                                <Typography variant="body1">
+                                                    Second option check
+                                                </Typography>
+                                            </Grid>
+                                        </Grid>
+                                        <Grid item container alignItems="center">
+                                            <Grid item>
+                                                <img src={check} alt="check-mark"></img>
+                                            </Grid>
+                                            <Grid item>
+                                                <Typography variant="body1">
+                                                    Third option check
+                                                </Typography>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
                                 </Grid>
                             </Grid>
                         </Grid>
