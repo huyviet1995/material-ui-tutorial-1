@@ -78,6 +78,18 @@ export default function Estimate() {
     // cost
     const [total, setTotal] = useState(0);
 
+    const [service, setService] = useState([]);
+
+    const [platforms, setPlatforms] = useState({});
+
+    const [features, setFeatures] = useState([]);
+
+    const [customFeatures, setCustomFeatures] = useState("");
+
+    const [category, setCategory] = useState("");
+
+    const [users, setUsers] = useState("");
+
     const defaultOptions = {
         loop: true,
         autoplay: true,
