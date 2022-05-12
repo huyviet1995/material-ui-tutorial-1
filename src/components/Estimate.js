@@ -209,12 +209,12 @@ export default function Estimate() {
 
         if (questions.length > 2) {
             const userCost = questions
-                .filter(
+                ?.filter(
                     (question) => question.title === "How many users do you expect?"
                 )
-                .map((question) =>
+                ?.map((question) =>
                     question.options.filter((option) => option.selected)
-                )[0][0].cost;
+                )[0][0]?.cost;
             cost = cost - userCost;
             cost = cost * userCost;
         }
