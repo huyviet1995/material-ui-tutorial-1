@@ -271,3 +271,32 @@ export const websiteQuestions = [
         active: true,
     },
 ];
+
+export const getPlatformsSummary = (platforms) => {
+    return `for ${
+        //if only web application is selected...
+        platforms &&
+        platforms?.indexOf("Web Application") > -1 &&
+        platforms?.length === 1
+        ? //then finish sentence here
+            "a Web Application."
+        : //otherwise, if web application and another platform is selected...
+        platforms?.indexOf("Web Application") > -1 &&
+            platforms?.length === 2
+        ? //then finish the sentence here
+            `a Web Application and an ${platforms[1]}.`
+        : //otherwise, if only one platform is selected which isn't web application...
+        platforms?.length === 1
+        ? //then finish the sentence here
+            `an ${platforms[0]}`
+        : //otherwise, if other two options are selected...
+        platforms?.length === 2
+        ? //then finish the sentence here
+            "an iOS Application and an Android Application."
+        : //otherwise if all three are selected...
+        platforms?.length === 3
+        ? //then finish the sentence here
+            "a Web Application, an iOS Application, and an Android Application."
+        : null
+    }`
+}

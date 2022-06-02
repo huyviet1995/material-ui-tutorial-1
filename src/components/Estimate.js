@@ -20,7 +20,7 @@ import forwardArrowDisabled from "../assets/forwardArrowDisabled.svg";
 import backArrow from "../assets/backArrow.svg";
 import forwardArrow from "../assets/forwardArrow.svg";
 import estimateAnimation from "../animations/estimateAnimation/data.json";
-import { defaultQuestions, softwareQuestions, websiteQuestions } from "../helpers";
+import { defaultQuestions, getPlatformsSummary, softwareQuestions, websiteQuestions } from "../helpers";
 
 const useStyles = makeStyles((theme) => ({
     icon: {
@@ -80,7 +80,7 @@ export default function Estimate() {
 
     const [service, setService] = useState([]);
 
-    const [platforms, setPlatforms] = useState({});
+    const [platforms, setPlatforms] = useState([]);
 
     const [features, setFeatures] = useState([]);
 
@@ -221,6 +221,19 @@ export default function Estimate() {
         setTotal(cost);
     };
 
+    const getPlatforms = () => {
+        let newPlatforms = [];
+
+        if (questions.length > 2) {
+            questions
+                .filter(question => question.title === 'Which platforms do you need supported?')
+                .map(question => question.options.filter(option => option.selected))[0]
+                .map(option => newPlatforms.push(option.title));
+        }
+
+        setPlatforms(newPlatforms);
+    }
+
     return (
         <Grid container direction="row">
             <Grid item container direction="column" lg>
@@ -345,6 +358,7 @@ export default function Estimate() {
                             className={classes.estimateButton}
                             onClick={() => {
                                 getTotal();
+                                getPlatforms();
                                 setDialogOpen(true);
                             }}
                         >
@@ -433,7 +447,7 @@ export default function Estimate() {
                                             </Grid>
                                             <Grid item>
                                                 <Typography variant="body1">
-                                                    First option check
+                                                    You want {getPlatformsSummary(platforms)}
                                                 </Typography>
                                             </Grid>
                                         </Grid>
